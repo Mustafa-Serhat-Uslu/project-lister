@@ -1,4 +1,7 @@
 const nextConfig = {
+  compiler: {
+    styledComponents: true,
+  },
   redirects: async () => [
     {
       source: "/",
