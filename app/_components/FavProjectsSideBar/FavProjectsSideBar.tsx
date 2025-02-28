@@ -3,8 +3,25 @@
 import { Divider, List } from "antd";
 import styled from "styled-components";
 
+const data = ["Project A", "Project B", "Project C"];
+
+export default function FavProjectsSideBar() {
+  return (
+    <div className="flex pr-2 md:pr-0">
+      <StyledList
+        size="small"
+        header={<div>Favorite Projects</div>}
+        dataSource={data}
+        renderItem={(item) => <List.Item>{item}</List.Item>}
+      />
+      <Divider className="h-screen" type="vertical" />
+    </div>
+  );
+}
+
 const StyledList = styled(List)`
   padding: 3rem 1rem;
+  white-space: nowrap;
 
   .ant-list-header,
   .ant-list-item {
@@ -22,19 +39,3 @@ const StyledList = styled(List)`
     display: list-item;
   }
 `;
-
-const data = ["Project A", "Project B", "Project C"];
-
-export default function FavProjectsSideBar() {
-  return (
-    <div className="flex">
-      <StyledList
-        size="small"
-        header={<div>Favorite Projects</div>}
-        dataSource={data}
-        renderItem={(item) => <List.Item>{item}</List.Item>}
-      />
-      <Divider className="h-screen" type="vertical" />
-    </div>
-  );
-}
