@@ -1,3 +1,6 @@
+import React from "react";
+import TableRowActions from "./TableRowActions/TableRowActions";
+
 export type columnType = {
   title: string;
   dataIndex: string;
@@ -6,7 +9,7 @@ export type columnType = {
   responsive?: string[];
   width: string;
   align: string;
-  render?: () => JSX.Element;
+  render?: (_text: any, record: DataType) => React.JSX.Element;
 };
 
 type DataType = {
@@ -66,16 +69,16 @@ export const columns: columnType[] = [
     align: "center" as const,
   },
   {
-    title: "Actions",
+    title: "",
     dataIndex: "actions",
     key: "actions",
     className: "actions",
     responsive: ["xs", "sm", "md", "lg", "xl"],
     width: "15%",
     align: "center" as const,
-    // render: () => (
-    // //   <ProjectActions />
-    // ),
+    render: (_text: any, record: DataType) => (
+      <TableRowActions projectId={record.projectId} />
+    ),
   },
 ];
 

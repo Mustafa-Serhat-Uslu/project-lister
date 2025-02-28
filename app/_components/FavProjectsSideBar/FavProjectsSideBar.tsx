@@ -7,7 +7,7 @@ const data = ["Project A", "Project B", "Project C"];
 
 export default function FavProjectsSideBar() {
   return (
-    <div className="flex pr-2 md:pr-0">
+    <div className="flex pr-0 md:pr-2">
       <StyledList
         size="small"
         header={<div>Favorite Projects</div>}
