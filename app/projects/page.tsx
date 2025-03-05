@@ -1,14 +1,14 @@
 "use client";
 
 import ProjectsTable from "../_components/ProjectsTable/ProjectsTable";
-import CreateProjectButton from "../_components/Buttons/CreateProject/CreateProjectButton";
+import RedirectToNew from "../_components/Buttons/RedirectToNew/RedirectToNew";
 
 const ProjectsPage = () => {
   return (
-    <div className="flex flex-col items-end w-full mr-8 gap-6 pt-10 ">
-      <CreateProjectButton />
+    <main className="flex flex-col items-end w-full mr-8 gap-6 pt-10 ">
+      <RedirectToNew />
       <ProjectsTable />
-    </div>
+    </main>
   );
 };
 

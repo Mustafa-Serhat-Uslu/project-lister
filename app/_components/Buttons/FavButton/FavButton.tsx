@@ -4,12 +4,14 @@ import styled from "styled-components";
 
 const StyledFavButton = styled(Button)`
   padding: 0;
+  border: none;
+  box-shadow: none;
 `;
 
 const FavButton = ({ projectId }: { projectId: string }) => {
   return (
-    <StyledFavButton type="text">
-      <FavoriteSvg isFavorite={true} />
+    <StyledFavButton type="default">
+      <FavoriteSvg isFavorite={false} />
     </StyledFavButton>
   );
 };

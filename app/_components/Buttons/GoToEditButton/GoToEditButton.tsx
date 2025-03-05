@@ -1,8 +1,7 @@
 import { Button } from "antd";
 import Link from "next/link";
-import React from "react";
 
-const EditButton = ({ projectId }: { projectId: string }) => {
+const GoToEditButton = ({ projectId }: { projectId: string }) => {
   return (
     <Link href={`/projects/${projectId}/edit`}>
       <Button
@@ -15,4 +14,4 @@ const EditButton = ({ projectId }: { projectId: string }) => {
   );
 };
 
-export default EditButton;
+export default GoToEditButton;

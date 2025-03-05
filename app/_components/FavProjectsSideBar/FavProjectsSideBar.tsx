@@ -14,7 +14,7 @@ export default function FavProjectsSideBar() {
         dataSource={data}
         renderItem={(item) => <List.Item>{item}</List.Item>}
       />
-      <Divider className="h-screen" type="vertical" />
+      <Divider className="h-screen border-[1px]" type="vertical" />
     </div>
   );
 }
