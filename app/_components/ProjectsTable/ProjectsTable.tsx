@@ -3,21 +3,35 @@ import { useWindowWidth } from "@/app/_utils/_hooks/useWindowSize";
 import { Table } from "antd";
 import { ColumnType } from "antd/es/table";
 import styled from "styled-components";
-import { columns, data } from "./ProjectsTableConfigs";
+import { columns } from "./ProjectsTableConfigs";
+import { useEffect, useState } from "react";
+import { getProjects } from "@/app/_actions/actions";
 
 const FAV_PROJECTS_WIDTH = 220;
 
 const ProjectsTable = () => {
   const windowWidth = useWindowWidth();
 
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const projects = await getProjects();
+      setData(projects);
+    };
+
+    fetchData();
+  }, []);
+
   //TODO: ColumnType check
   return (
     <StyledTable<ColumnType> //TODO: types fix
       style={{ width: windowWidth - FAV_PROJECTS_WIDTH }} //For active resizing
-      columns={columns}
+      rowKey={"projectId"}
       dataSource={data}
-      pagination={false}
+      columns={columns}
       sticky={true}
+      pagination={false}
     />
   );
 };

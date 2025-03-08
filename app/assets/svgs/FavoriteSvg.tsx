@@ -1,3 +1,4 @@
+import { Project } from "@/app/_types/types";
 import styled from "styled-components";
 
 const StyledSvg = styled.svg<{ $isFavorite?: boolean }>`
@@ -22,7 +23,11 @@ const StyledSvg = styled.svg<{ $isFavorite?: boolean }>`
   `}
 `;
 
-export const FavoriteSvg = ({ isFavorite }: { isFavorite: boolean }) => (
+export const FavoriteSvg = ({
+  isFavorite,
+}: {
+  isFavorite: Project["isFavorite"];
+}) => (
   <StyledSvg $isFavorite={isFavorite} viewBox="0 0 512 512">
     <g data-name="Layer 2" id="Layer_2">
       <g>

@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 export type Project = {
   projectId: string;
   projectName: string;
@@ -5,11 +7,21 @@ export type Project = {
   startDate: string;
   endDate: string;
   projectManager: string;
+  isFavorite?: boolean;
+};
+
+export type FormProject = Project & {
+  startDate: dayjs.Dayjs;
+  endDate: dayjs.Dayjs;
 };
 
 export type ProjectKeys = keyof Project;
 
-export type InputPickerTypes = {
-  inputType: "textInput" | "textArea" | "datePicker";
-  existingContent: string | undefined;
+export type FormState = {
+  msg?: string;
+  errors?: StringMap;
+};
+
+export type StringMap = {
+  [key: string]: string;
 };

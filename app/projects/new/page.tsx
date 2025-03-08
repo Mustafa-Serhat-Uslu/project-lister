@@ -1,3 +1,4 @@
+"use client"; //TODO: rethink architecture for form.item
 import CreateNewProject from "@/app/_components/Buttons/CreateNewProject/CreateNewProject";
 import ProjectGrid from "@/app/_components/ProjectLayout/ProjectLayout";
 import { Form } from "antd";
@@ -8,7 +9,10 @@ export default function NewProjectPage() {
       <ProjectGrid
         project={undefined}
         buttons={
-          <Form.Item className="max-w-md flex justify-center mt-12">
+          <Form.Item
+            label={null}
+            className="max-w-md flex justify-center mt-12"
+          >
             <CreateNewProject />
           </Form.Item>
         }
