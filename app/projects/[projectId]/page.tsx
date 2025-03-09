@@ -2,6 +2,7 @@
 
 import { getProject } from "@/app/_actions/actions";
 import FavButton from "@/app/_components/Buttons/FavButton/FavButton";
+import GoBackButton from "@/app/_components/Buttons/GoBackButton/GoBackButton";
 import GoToEditButton from "@/app/_components/Buttons/GoToEditButton/GoToEditButton";
 import ProjectGrid from "@/app/_components/ProjectLayout/ProjectLayout";
 import { Project } from "@/app/_types/types";
@@ -34,6 +35,7 @@ export default function ProjectDetailsPage(): JSX.Element {
         disabledFields={allProjectKeys}
         buttons={
           <div className="max-w-md flex justify-center mt-12">
+            <GoBackButton />
             <GoToEditButton projectId={params.projectId} />
           </div>
         }

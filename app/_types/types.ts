@@ -25,3 +25,8 @@ export type FormState = {
 export type StringMap = {
   [key: string]: string;
 };
+
+export type FavoritesData = Record<
+  Project["projectId"],
+  Project["projectName"]
+>;

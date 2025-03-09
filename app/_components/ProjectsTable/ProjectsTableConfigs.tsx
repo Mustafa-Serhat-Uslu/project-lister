@@ -1,6 +1,7 @@
 import React from "react";
 import TableRowActions from "./TableRowActions/TableRowActions";
 import { Project } from "@/app/_types/types";
+import GoToProjectDetailsButton from "../Buttons/GoToProjectDetails/GoToProjectDetailsButton";
 
 export type columnType = {
   title: string;
@@ -22,6 +23,12 @@ export const columns: columnType[] = [
     responsive: ["xs", "sm", "md", "lg", "xl"],
     width: "8%",
     align: "center" as const,
+    render: (_, project: Project) => (
+      <GoToProjectDetailsButton
+        projectId={project.projectId}
+        text={project.projectId}
+      />
+    ),
   },
   {
     title: "Project Name",
@@ -75,30 +82,3 @@ export const columns: columnType[] = [
     ),
   },
 ];
-
-// export const datag: DataType[] = [
-//   {
-//     key: "1",
-//     projectId: "project_a",
-//     projectName: "Project A",
-//     startDate: "2025-01-01",
-//     endDate: "2025-12-31",
-//     projectManager: "John Doe",
-//   },
-//   {
-//     key: "2",
-//     projectId: "project_b",
-//     projectName: "Project B",
-//     startDate: "2025-01-01",
-//     endDate: "2025-12-31",
-//     projectManager: "John Doe",
-//   },
-//   {
-//     key: "3",
-//     projectId: "project_c",
-//     projectName: "Project C",
-//     startDate: "2025-01-01",
-//     endDate: "2025-12-31",
-//     projectManager: "John Doe",
-//   },
-// ];

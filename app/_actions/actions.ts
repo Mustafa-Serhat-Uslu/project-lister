@@ -2,7 +2,7 @@
 
 import fs from "fs/promises";
 import path from "path";
-import { FormState, Project } from "../_types/types";
+import { FavoritesData, FormState, Project } from "../_types/types";
 import { ProjectSchema } from "../_schemas/projectSchema";
 import { convertZodErrors } from "../_utils/errors/errors";
 
@@ -80,4 +80,19 @@ export async function toggleFavorite(projectid: string): Promise<FormState> {
   await fs.writeFile(filePath, JSON.stringify(projects, null, 2), "utf-8");
 
   return { msg: "Favorites Updated!" };
+}
+
+export async function getFavoriteProjectNames(): Promise<
+  Project["projectName"][]
+> {
+  const projects = await getProjects();
+
+  const gg = projects.reduce((acc: FavoritesData, p: Project) => {
+    if (p.isFavorite) {
+      acc[p.projectId] = p.projectName;
+    }
+    return acc;
+  }, {});
+
+  return gg;
 }

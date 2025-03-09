@@ -32,7 +32,7 @@
     "startDate": "2025-03-01",
     "endDate": "2025-03-31",
     "projectManager": "Definetly Not Me",
-    "isFavorite": false
+    "isFavorite": true
   },
   {
     "projectId": "idkidk",
@@ -42,5 +42,14 @@
     "endDate": "2043-04-29",
     "projectManager": "idkManager",
     "isFavorite": true
+  },
+  {
+    "projectId": "awrg`sfg",
+    "projectName": "wFwsgfwr",
+    "description": "wfwfwfw",
+    "startDate": "2025-03-31",
+    "endDate": "2026-03-31",
+    "projectManager": "me",
+    "isFavorite": false
   }
 ]

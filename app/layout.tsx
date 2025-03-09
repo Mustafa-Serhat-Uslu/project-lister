@@ -4,6 +4,7 @@ import "./globals.css";
 import FavProjectsSideBar from "./_components/FavProjectsSideBar/FavProjectsSideBar";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import StyledComponentsRegistry from "./_lib/registry";
+import { ProjectsContextProvider } from "./_contexts/ProjectsContext/ProjectsContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,8 +33,10 @@ export default function RootLayout({
       >
         <AntdRegistry>
           <StyledComponentsRegistry>
-            <FavProjectsSideBar />
-            {children}
+            <ProjectsContextProvider>
+              <FavProjectsSideBar />
+              {children}
+            </ProjectsContextProvider>
           </StyledComponentsRegistry>
         </AntdRegistry>
       </body>
