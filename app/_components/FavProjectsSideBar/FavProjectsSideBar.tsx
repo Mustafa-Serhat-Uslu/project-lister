@@ -7,22 +7,24 @@ import styled from "styled-components";
 import GoToProjectDetailsButton from "../Buttons/GoToProjectDetails/GoToProjectDetailsButton";
 
 export default function FavProjectsSideBar() {
-  const { favoriteProjects }: ProjectsContextType = useProjectsContext();
+  const { optimisticFavProjects }: ProjectsContextType = useProjectsContext();
+
+  if (!optimisticFavProjects) return undefined;
 
   return (
     <div className="flex pr-0 md:pr-2">
       <StyledList
         size="small"
         header={<div>Favorite Projects</div>}
-        dataSource={Object.keys(favoriteProjects)}
+        dataSource={Object.keys(optimisticFavProjects)}
         renderItem={(item) => {
-          const projectId = item as keyof typeof favoriteProjects;
+          const projectId = item as keyof typeof optimisticFavProjects;
 
           return (
             <List.Item>
               <GoToProjectDetailsButton
                 projectId={projectId}
-                text={favoriteProjects[projectId]}
+                text={optimisticFavProjects[projectId]}
               />
             </List.Item>
           );

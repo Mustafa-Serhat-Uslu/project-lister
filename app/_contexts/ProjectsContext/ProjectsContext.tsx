@@ -1,36 +1,49 @@
 "use client";
 
-import { getFavoriteProjectNames } from "@/app/_actions/actions";
+import { createContext, useEffect, useMemo, useReducer, useState } from "react";
+import { getFavoriteProjects } from "@/app/_actions/actions";
 import { FavoritesData } from "@/app/_types/types";
-import React, { createContext, useEffect, useMemo, useState } from "react";
+import {
+  OptimisticFavoritesAction,
+  optimisticFavoritesReducer,
+} from "./ProjectsContextActions";
 
 export type ProjectsContextType = {
-  favoriteProjects: FavoritesData;
+  optimisticFavProjects: FavoritesData;
+  setOptimisticFavProjects: (action: OptimisticFavoritesAction) => void;
 };
 
 export const ProjectsContext = createContext<ProjectsContextType>({
-  favoriteProjects: {},
+  optimisticFavProjects: {},
+  setOptimisticFavProjects: () => null,
 });
 
 export const ProjectsContextProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
-  const [favoriteProjects, setFavoriteProjects] = useState<FavoritesData>({});
+  const [optimisticFavProjects, setOptimisticFavProjects] = useReducer(
+    optimisticFavoritesReducer,
+    {}
+  );
 
   useEffect(() => {
     async function fetchFavProjects() {
-      const favs: FavoritesData = await getFavoriteProjectNames();
-      setFavoriteProjects(favs);
+      try {
+        const favs: FavoritesData = await getFavoriteProjects();
+        setOptimisticFavProjects({ type: "SET", favoritesData: favs });
+      } catch (error) {
+        console.error("Failed to fetch favorite projects", error);
+      }
     }
     fetchFavProjects();
   }, []);
 
   const data = useMemo(
     () => ({
-      favoriteProjects,
-      setFavoriteProjects,
+      optimisticFavProjects,
+      setOptimisticFavProjects,
     }),
-    [favoriteProjects]
+    [optimisticFavProjects]
   );
 
   return (

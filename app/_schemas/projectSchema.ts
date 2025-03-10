@@ -6,11 +6,15 @@ export const ProjectSchema = z
       .string()
       .min(5, "Project ID cannot be less than 5 characters")
       .max(12, "ProjectId cannot exceed 12 characters")
-      .regex(/^\S*$/, "Project ID cannot contain whitespace"),
+      .regex(/^\S*$/, "Project ID cannot contain whitespace")
+      .regex(
+        /^[a-zA-Z0-9]*$/,
+        "Project ID can only contain alphanumeric characters" //For navigating to dynamic slug url
+      ),
     projectName: z
       .string()
       .min(1, "Project name is required")
-      .max(100, "Project name cannot exceed 100 characters"),
+      .max(12, "Project name cannot exceed 12 characters"),
     description: z
       .string()
       .min(1, "Description is required")

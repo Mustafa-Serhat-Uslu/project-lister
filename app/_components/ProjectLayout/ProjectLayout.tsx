@@ -15,6 +15,7 @@ import TextArea from "antd/es/input/TextArea";
 import dayjs from "dayjs";
 import { toCamelCase } from "@/app/_utils/_functions/toCamelCase";
 import { useRouter } from "next/navigation";
+import { useProjectsContext } from "@/app/_contexts/ProjectsContext/useProjectsContext";
 
 const getFormItemProps = (label: string, errors: StringMap | undefined) => {
   const dataKey: ProjectKeys = toCamelCase(label);
@@ -41,7 +42,6 @@ const initialValues: Project = {
   projectManager: "",
 };
 
-//TODO: use mapping
 const ProjectLayout = ({
   existingProject,
   buttons,
@@ -51,6 +51,7 @@ const ProjectLayout = ({
   buttons: React.JSX.Element;
   disabledFields?: ProjectKeys[];
 }) => {
+  const { setOptimisticFavProjects } = useProjectsContext();
   const [errors, setErrors] = useState<StringMap | undefined>(undefined);
   const [form] = Form.useForm();
   const router = useRouter();
@@ -64,21 +65,32 @@ const ProjectLayout = ({
       endDate: project.endDate.format(dateFormat),
     };
 
+    const revertOptimisticFavProjectsUpdate = () => {
+      if (existingProject && existingProject?.isFavorite)
+        setOptimisticFavProjects({ type: "SAVE", project: existingProject });
+    };
+
     try {
       if (existingProject) {
+        if (existingProject.isFavorite) {
+          setOptimisticFavProjects({ type: "SAVE", project: projectToSend });
+        }
         ({ errors, msg } = await updateProject(projectToSend));
       } else {
         ({ errors, msg } = await addProject(projectToSend));
       }
 
+      //TODO: Move to finally?
       if (errors) {
+        revertOptimisticFavProjectsUpdate();
         setErrors(errors);
       } else {
         console.log(msg); // TODO: add toaster with msg
-        if (errors) setErrors(undefined);
+        setErrors(undefined);
         router.replace("/projects");
       }
     } catch (e) {
+      revertOptimisticFavProjectsUpdate();
       console.log("Error occurred: ", e);
     }
   }
@@ -113,7 +125,7 @@ const ProjectLayout = ({
             disabledFields?.includes("projectName") ? "borderless" : "outlined"
           }
           minLength={1}
-          maxLength={100}
+          maxLength={12}
         />
       </StyledFormItem>
 

@@ -8,7 +8,10 @@ import { convertZodErrors } from "../_utils/errors/errors";
 
 const filePath = path.join(process.cwd(), "data", "data.json");
 
+//TODO: consider revalidat path options?
+
 export async function getProjects() {
+  await new Promise((resolve) => setTimeout(resolve, 500)); //TODO: remove delay
   try {
     const rawProjects = await fs.readFile(filePath, "utf-8");
     return JSON.parse(rawProjects);
@@ -82,17 +85,20 @@ export async function toggleFavorite(projectid: string): Promise<FormState> {
   return { msg: "Favorites Updated!" };
 }
 
-export async function getFavoriteProjectNames(): Promise<
-  Project["projectName"][]
-> {
-  const projects = await getProjects();
+export async function getFavoriteProjects(): Promise<FavoritesData> {
+  let favoriteProjects: FavoritesData = {};
 
-  const gg = projects.reduce((acc: FavoritesData, p: Project) => {
-    if (p.isFavorite) {
-      acc[p.projectId] = p.projectName;
-    }
-    return acc;
-  }, {});
+  try {
+    const projects = await getProjects();
+    favoriteProjects = projects.reduce((acc: FavoritesData, p: Project) => {
+      if (p.isFavorite) {
+        acc[p.projectId] = p.projectName;
+      }
+      return acc;
+    }, {});
+  } catch (e) {
+    console.error("Error getting favorite projects:", e);
+  }
 
-  return gg;
+  return favoriteProjects;
 }

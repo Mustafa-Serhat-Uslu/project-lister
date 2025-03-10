@@ -40,10 +40,7 @@ export default function ProjectDetailsPage(): JSX.Element {
           </div>
         }
       />
-      <FavButton
-        projectId={project.projectId}
-        isFavorite={project.isFavorite}
-      />
+      <FavButton project={project} />
     </main>
   );
 }

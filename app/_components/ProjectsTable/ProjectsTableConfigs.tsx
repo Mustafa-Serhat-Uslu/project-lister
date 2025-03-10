@@ -74,11 +74,6 @@ export const columns: columnType[] = [
     responsive: ["xs", "sm", "md", "lg", "xl"],
     width: "15%",
     align: "center" as const,
-    render: (_, project: Project) => (
-      <TableRowActions
-        projectId={project.projectId}
-        isFavorite={project.isFavorite}
-      />
-    ),
+    render: (_, project: Project) => <TableRowActions project={project} />,
   },
 ];
