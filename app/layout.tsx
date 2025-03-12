@@ -1,20 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import FavProjectsSideBar from "./_components/FavProjectsSideBar/FavProjectsSideBar";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import StyledComponentsRegistry from "./_lib/registry";
 import { ProjectsContextProvider } from "./_contexts/ProjectsContext/ProjectsContext";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Project Lister",
@@ -28,9 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex w-screen`}
-      >
+      <body className={`antialiased flex w-screen h-screen`}>
         <AntdRegistry>
           <StyledComponentsRegistry>
             <ProjectsContextProvider>

@@ -5,9 +5,9 @@ import { Form } from "antd";
 
 export default function NewProjectPage() {
   return (
-    <main className="w-full h-full p-16 max-w-3xl ">
+    <main className="w-full h-full pt-16 max-w-3xl  md:p-16">
       <ProjectGrid
-        project={undefined}
+        existingProject={undefined}
         buttons={
           <Form.Item
             label={null}

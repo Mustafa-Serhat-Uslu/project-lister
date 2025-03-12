@@ -4,7 +4,10 @@ import Link from "next/link";
 const GoToEditButton = ({ projectId }: { projectId: string }) => {
   return (
     <Link href={`/projects/${projectId}/edit`}>
-      <Button type="primary" className="rounded-none w-20">
+      <Button
+        type="primary"
+        className="rounded-none w-24 scale-75 md:scale-100"
+      >
         Edit
       </Button>
     </Link>

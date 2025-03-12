@@ -9,7 +9,7 @@ const GoBackButton = () => {
   return (
     <Button
       type="primary"
-      className="rounded-none w-20 scale-75 md:scale-100"
+      className="rounded-none w-24 scale-75 md:scale-100"
       onClick={() => router.back()}
     >
       Back

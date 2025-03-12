@@ -29,12 +29,12 @@ export default function ProjectDetailsPage(): JSX.Element {
 
   const allProjectKeys = Object.keys(project) as (keyof Project)[];
   return (
-    <main className=" flex w-full h-full p-16 max-w-3xl ">
+    <main className="ProjectDetailsPage flex w-full h-full pt-16 max-w-3xl pl-0  md:p-16">
       <ProjectGrid
         existingProject={project}
         disabledFields={allProjectKeys}
         buttons={
-          <div className="max-w-md flex justify-center mt-12">
+          <div className="max-w-md flex justify-center mt-12 gap-5">
             <GoBackButton />
             <GoToEditButton projectId={params.projectId} />
           </div>

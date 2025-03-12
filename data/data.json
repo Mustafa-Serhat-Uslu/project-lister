@@ -10,11 +10,10 @@
   {
     "projectId": "wfwefsd",
     "projectName": "Project A",
-    "description": "wswvs",
+    "description": "dvadsdsvsv",
     "startDate": "2022-03-07",
     "endDate": "2025-03-29",
-    "projectManager": "ssvc",
-    "isFavorite": true
+    "projectManager": "svasvsasv"
   },
   {
     "projectId": "someProject",
@@ -40,7 +39,24 @@
     "description": "Project A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionP",
     "startDate": "2025-03-12",
     "endDate": "2026-03-07",
-    "projectManager": "Project Manager AAAAAAAAAAAAAAAAAAA",
+    "projectManager": "AAAAAAAAAAAAAAAA"
+  },
+  {
+    "projectId": "AAAAAAAAAAAA",
+    "projectName": "AAAAAAAAAAAA",
+    "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "startDate": "2025-03-26",
+    "endDate": "2025-03-31",
+    "projectManager": "AAAAAAAAAAAAAAAA",
+    "isFavorite": true
+  },
+  {
+    "projectId": "advswvS",
+    "projectName": "svsvsfv",
+    "description": "wvsvfs",
+    "startDate": "2025-02-27",
+    "endDate": "2029-03-15",
+    "projectManager": "`svsvsfv",
     "isFavorite": false
   }
 ]
