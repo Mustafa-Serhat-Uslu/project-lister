@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import { getProject } from "@/app/_actions/actions";
 import FavButton from "@/app/_components/Buttons/FavButton/FavButton";
 import GoBackButton from "@/app/_components/Buttons/GoBackButton/GoBackButton";
@@ -7,9 +8,9 @@ import GoToEditButton from "@/app/_components/Buttons/GoToEditButton/GoToEditBut
 import ProjectGrid from "@/app/_components/ProjectLayout/ProjectLayout";
 import { Project } from "@/app/_types/types";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import Loading from "@/app/loading";
 
-export default function ProjectDetailsPage(): JSX.Element {
+export default function ProjectDetailsPage(): React.JSX.Element {
   const params = useParams<{ projectId: string }>();
 
   const [project, setProject] = useState<Project | null>(null);
@@ -22,10 +23,7 @@ export default function ProjectDetailsPage(): JSX.Element {
     fetchProject();
   }, [params.projectId]);
 
-  //TODO: Loading for the layout
-  if (!project) {
-    return <div>Loading...</div>;
-  }
+  if (!project) return <Loading />;
 
   const allProjectKeys = Object.keys(project) as (keyof Project)[];
   return (

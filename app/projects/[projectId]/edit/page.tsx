@@ -6,8 +6,9 @@ import { getProject } from "@/app/_actions/actions";
 import { Project } from "@/app/_types/types";
 import UpdateButton from "@/app/_components/Buttons/Update/UpdateButton";
 import ProjectGrid from "@/app/_components/ProjectLayout/ProjectLayout";
+import Loading from "@/app/loading";
 
-export default function ProjectEditPage(): JSX.Element {
+export default function ProjectEditPage(): React.JSX.Element {
   const params = useParams<{ projectId: string }>();
 
   const [project, setProject] = useState<Project | null>(null);
@@ -20,10 +21,7 @@ export default function ProjectEditPage(): JSX.Element {
     fetchProject();
   }, [params.projectId]);
 
-  //TODO: Loading for the layout
-  if (!project) {
-    return <div>Loading...</div>;
-  }
+  if (!project) return <Loading />;
 
   return (
     <main className="ProjectEditPage w-full h-full pt-16 pl-0 max-w-3xl md:p-16  ">
