@@ -11,6 +11,7 @@ const StyledFavButton = styled(Button)`
   padding: 0;
   border: none;
   box-shadow: none;
+  background-color: inherit;
 `;
 
 const FavButton = ({ project }: { project: Project }) => {

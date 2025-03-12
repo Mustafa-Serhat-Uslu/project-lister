@@ -114,7 +114,7 @@ const ProjectLayout = ({
           variant={
             disabledFields?.includes("projectId") ? "borderless" : "outlined"
           }
-          minLength={5}
+          minLength={3}
           maxLength={12}
         />
       </StyledFormItem>
@@ -170,7 +170,7 @@ const ProjectLayout = ({
               : "outlined"
           }
           minLength={1}
-          maxLength={35}
+          maxLength={16}
         />
       </StyledFormItem>
 

@@ -9,7 +9,7 @@
   },
   {
     "projectId": "wfwefsd",
-    "projectName": "wWDSQ____",
+    "projectName": "Project A",
     "description": "wswvs",
     "startDate": "2022-03-07",
     "endDate": "2025-03-29",
@@ -18,7 +18,7 @@
   },
   {
     "projectId": "someProject",
-    "projectName": "This Project__",
+    "projectName": "Loo12ooooooo",
     "description": "Some description which is long. Some description which is long. Some description which is long. Some description which is long. Some description which is long. Some description which is long.Some description which is long. Some description which is long. Some description which is long.",
     "startDate": "2025-03-01",
     "endDate": "2025-03-31",
@@ -32,6 +32,15 @@
     "startDate": "2006-03-06",
     "endDate": "2043-04-29",
     "projectManager": "idkManager",
+    "isFavorite": false
+  },
+  {
+    "projectId": "project_aaaa",
+    "projectName": "Project AAAA",
+    "description": "Project A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionProject A has very loong descriptionP",
+    "startDate": "2025-03-12",
+    "endDate": "2026-03-07",
+    "projectManager": "Project Manager AAAAAAAAAAAAAAAAAAA",
     "isFavorite": false
   }
 ]

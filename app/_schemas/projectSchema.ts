@@ -4,12 +4,12 @@ export const ProjectSchema = z
   .object({
     projectId: z
       .string()
-      .min(5, "Project ID cannot be less than 5 characters")
+      .min(3, "Project ID cannot be less than 3 characters")
       .max(12, "ProjectId cannot exceed 12 characters")
       .regex(/^\S*$/, "Project ID cannot contain whitespace")
       .regex(
-        /^[a-zA-Z0-9]*$/,
-        "Project ID can only contain alphanumeric characters" //For navigating to dynamic slug url
+        /^[a-zA-Z0-9_]*$/,
+        "Project ID can only contain alphanumeric characters and underscores"
       ),
     projectName: z
       .string()
@@ -34,7 +34,7 @@ export const ProjectSchema = z
     projectManager: z
       .string()
       .min(1, "Project manager is required")
-      .max(35, "Project manager name cannot exceed 35 characters"),
+      .max(16, "Project manager name cannot exceed 16 characters"),
   })
   .refine((data) => new Date(data.endDate) > new Date(data.startDate), {
     message: "End date must be greater than start date",
