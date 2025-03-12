@@ -8,8 +8,6 @@ import { convertZodErrors } from "../_utils/errors/errors";
 
 const filePath = path.join(process.cwd(), "data", "data.json");
 
-//TODO: consider revalidat path options?
-
 export async function getProjects() {
   await new Promise((resolve) => setTimeout(resolve, 500)); //TODO: remove delay
   try {

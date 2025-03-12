@@ -28,7 +28,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next.config.ts",
-    "app/_components/ProjectLayout/ProjectContent"
+    "app/_components/ProjectForm/ProjectContent"
   ],
   "exclude": ["node_modules"]
 }

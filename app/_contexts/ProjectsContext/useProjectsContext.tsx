@@ -1,4 +1,4 @@
-"use client"; //TODO: ?
+"use client";
 
 import { useContext } from "react";
 import { ProjectsContext } from "./ProjectsContext";

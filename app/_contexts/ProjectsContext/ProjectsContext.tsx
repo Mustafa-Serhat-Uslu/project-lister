@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useEffect, useMemo, useReducer, useState } from "react";
+import { createContext, useEffect, useMemo, useReducer } from "react";
 import { getFavoriteProjects } from "@/app/_actions/actions";
 import { FavoritesData } from "@/app/_types/types";
 import {

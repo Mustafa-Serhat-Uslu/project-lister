@@ -43,7 +43,7 @@ const initialValues: Project = {
   projectManager: "",
 };
 
-const ProjectLayout = ({
+const ProjectForm = ({
   existingProject,
   buttons,
   disabledFields,
@@ -188,7 +188,7 @@ const ProjectLayout = ({
   );
 };
 
-export default ProjectLayout;
+export default ProjectForm;
 
 const StyledFormItem = styled(Form.Item)`
   ${responsiveFont}

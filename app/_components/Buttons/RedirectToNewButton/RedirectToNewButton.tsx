@@ -1,7 +1,7 @@
 import { Button } from "antd";
 import Link from "next/link";
 
-const RedirectToNew = () => {
+const RedirectToNewButton = () => {
   return (
     <Link href={`/projects/new`}>
       <Button
@@ -14,4 +14,4 @@ const RedirectToNew = () => {
   );
 };
 
-export default RedirectToNew;
+export default RedirectToNewButton;

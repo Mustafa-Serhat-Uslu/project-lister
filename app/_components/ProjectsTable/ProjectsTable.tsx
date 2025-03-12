@@ -1,4 +1,4 @@
-import { useWindowWidth } from "@/app/_utils/_hooks/useWindowSize";
+import { useWindowWidth } from "@/app/_utils/hooks/useWindowSize";
 
 import { Table } from "antd";
 import { ColumnType } from "antd/es/table";

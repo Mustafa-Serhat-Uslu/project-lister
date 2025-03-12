@@ -1,6 +1,6 @@
 import { Button } from "antd";
 
-const CreateNewProject = () => {
+const CreateNewProjectButton = () => {
   return (
     <Button
       htmlType="submit"
@@ -12,4 +12,4 @@ const CreateNewProject = () => {
   );
 };
 
-export default CreateNewProject;
+export default CreateNewProjectButton;
