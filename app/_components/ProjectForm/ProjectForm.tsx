@@ -9,38 +9,18 @@ import {
 import { DatePicker, Form, Input } from "antd";
 import { addProject, updateProject } from "@/app/_actions/actions";
 import { useState } from "react";
-import { ValidateStatus } from "antd/es/form/FormItem";
 import TextArea from "antd/es/input/TextArea";
 import dayjs from "dayjs";
-import { toCamelCase } from "@/app/_utils/functions/toCamelCase";
 import { useRouter } from "next/navigation";
 import { useProjectsContext } from "@/app/_contexts/ProjectsContext/useProjectsContext";
 import { StyledFormItem } from "./ProjectFormStyles";
-
-const getFormItemProps = (label: string, errors: StringMap | undefined) => {
-  const dataKey: ProjectKeys = toCamelCase(label);
-
-  return {
-    name: dataKey,
-    label: label,
-    hasFeedback: true,
-    help: errors?.[dataKey],
-    validateStatus: errors?.[dataKey] && ("error" as ValidateStatus),
-    rules: [{ required: true, message: "Please fill!" }],
-    variant: "borderless",
-  };
-};
-
-const dateFormat = "YYYY-MM-DD";
-
-const initialValues: Project = {
-  projectId: "",
-  projectName: "",
-  description: "",
-  startDate: "",
-  endDate: "",
-  projectManager: "",
-};
+import {
+  convertProjectDatesToDayjs,
+  convertProjectDatesToString,
+  dateFormat,
+  getFormItemProps,
+  initialValues,
+} from "./ProjectFormUtils";
 
 const ProjectForm = ({
   existingProject,
@@ -59,95 +39,76 @@ const ProjectForm = ({
   async function onFinish(project: FormProject): Promise<void> {
     let errors, msg;
 
-    const projectToSend = {
-      ...project,
-      startDate: project.startDate.format(dateFormat),
-      endDate: project.endDate.format(dateFormat),
-    };
+    const projectToSend = convertProjectDatesToString(project);
 
-    const revertOptimisticFavProjectsUpdate = () => {
-      if (existingProject && existingProject?.isFavorite)
-        setOptimisticFavProjects({ type: "SAVE", project: existingProject });
+    const optimisticFavProjectsUpdate = (p: Project | undefined) => {
+      if (p && existingProject && existingProject?.isFavorite)
+        setOptimisticFavProjects({ type: "SAVE", project: p });
     };
 
     try {
       if (existingProject) {
-        if (existingProject.isFavorite) {
-          setOptimisticFavProjects({ type: "SAVE", project: projectToSend });
-        }
+        optimisticFavProjectsUpdate(projectToSend);
         ({ errors, msg } = await updateProject(projectToSend));
       } else {
         ({ errors, msg } = await addProject(projectToSend));
       }
 
-      //TODO: Move to finally?
       if (errors) {
-        revertOptimisticFavProjectsUpdate();
+        optimisticFavProjectsUpdate(existingProject); //revert
         setErrors(errors);
       } else {
-        console.error(msg);
+        console.log(msg); //TODO: show on a Toaster component...
         setErrors(undefined);
         router.replace("/projects");
       }
     } catch (e) {
-      revertOptimisticFavProjectsUpdate();
-      console.log("Error occurred: ", e);
+      optimisticFavProjectsUpdate(existingProject); //revert
+      console.error("Error occurred: ", e);
     }
   }
+
+  const getInputVariant = (fieldId: ProjectKeys) =>
+    disabledFields?.includes(fieldId) ? "borderless" : "outlined";
 
   return (
     <Form
       className="w-full h-full flex flex-col gap-2 [@media(min-width:575px)]:gap-4"
       form={form}
       initialValues={
-        (existingProject && {
-          ...existingProject,
-          startDate: dayjs(existingProject.startDate, dateFormat),
-          endDate: dayjs(existingProject.endDate, dateFormat),
-        }) ||
+        (existingProject && convertProjectDatesToDayjs(existingProject)) ||
         initialValues
       }
       onFinish={onFinish}
     >
       <StyledFormItem {...getFormItemProps("Project ID", errors)}>
         <Input
-          variant={
-            disabledFields?.includes("projectId") ? "borderless" : "outlined"
-          }
+          variant={getInputVariant("projectId")}
           minLength={3}
           maxLength={12}
           autoComplete={"off"}
         />
       </StyledFormItem>
-
       <StyledFormItem {...getFormItemProps("Project Name", errors)}>
         <Input
-          variant={
-            disabledFields?.includes("projectName") ? "borderless" : "outlined"
-          }
+          variant={getInputVariant("projectName")}
           minLength={1}
           maxLength={12}
           autoComplete={"off"}
         />
       </StyledFormItem>
-
       <StyledFormItem {...getFormItemProps("Description", errors)}>
         <TextArea
-          variant={
-            disabledFields?.includes("description") ? "borderless" : "outlined"
-          }
+          variant={getInputVariant("description")}
           rows={4}
           minLength={1}
           maxLength={325}
           autoComplete={"off"}
         />
       </StyledFormItem>
-
       <StyledFormItem {...getFormItemProps("Start Date", errors)}>
         <DatePicker
-          variant={
-            disabledFields?.includes("startDate") ? "borderless" : "outlined"
-          }
+          variant={getInputVariant("startDate")}
           minDate={dayjs("2000-01-01", dateFormat)}
           maxDate={dayjs("2050-12-31", dateFormat)}
           placeholder={""}
@@ -155,12 +116,9 @@ const ProjectForm = ({
           autoComplete={"off"}
         />
       </StyledFormItem>
-
       <StyledFormItem {...getFormItemProps("End Date", errors)}>
         <DatePicker
-          variant={
-            disabledFields?.includes("endDate") ? "borderless" : "outlined"
-          }
+          variant={getInputVariant("endDate")}
           minDate={dayjs("2000-01-01", dateFormat)}
           maxDate={dayjs("2050-12-31", dateFormat)}
           placeholder={""}
@@ -168,21 +126,15 @@ const ProjectForm = ({
           autoComplete={"off"}
         />
       </StyledFormItem>
-
       <StyledFormItem {...getFormItemProps("Project Manager", errors)}>
         <Input
-          variant={
-            disabledFields?.includes("projectManager")
-              ? "borderless"
-              : "outlined"
-          }
+          variant={getInputVariant("projectManager")}
           minLength={1}
           maxLength={16}
           autoComplete={"off"}
         />
       </StyledFormItem>
-
-      {buttons}
+      {buttons} {/* EDIT, CREATE, UPDATE, BACK buttons */}
     </Form>
   );
 };

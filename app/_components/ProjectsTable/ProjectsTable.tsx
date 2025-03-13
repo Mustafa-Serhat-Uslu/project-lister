@@ -5,6 +5,7 @@ import { columns } from "./ProjectsTableConfigs";
 import { Project } from "@/app/_types/types";
 import { ColumnType } from "antd/es/table";
 import { useWindowWidth } from "@/app/_utils/hooks/useWindowSize";
+import Loading from "@/app/loading";
 
 const EXTRA_SPACE = 240;
 
@@ -15,12 +16,18 @@ const ProjectsTable = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const projects: Project[] = await getProjects();
-      setData(projects);
+      const { data: projects, msg } = await getProjects();
+      if (projects) {
+        setData(projects);
+        return;
+      }
+      console.error(msg);
     };
 
     fetchData();
   }, []);
+
+  if (!data) return <Loading />;
 
   return (
     <StyledTable<Project>

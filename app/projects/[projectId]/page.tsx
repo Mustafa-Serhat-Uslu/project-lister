@@ -18,8 +18,14 @@ export default function ProjectDetailsPage(): React.JSX.Element {
 
   useEffect(() => {
     async function fetchProject() {
-      const projectData: Project = await getProject(params.projectId);
-      setProject(projectData);
+      const { data: projectData, msg } = await getProject(params.projectId);
+
+      if (projectData) {
+        setProject(projectData);
+        return;
+      }
+
+      console.error(msg);
     }
     fetchProject();
   }, [params.projectId]);

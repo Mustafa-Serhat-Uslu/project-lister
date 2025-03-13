@@ -15,8 +15,13 @@ export default function ProjectEditPage(): React.JSX.Element {
 
   useEffect(() => {
     async function fetchProject() {
-      const projectData: Project = await getProject(params.projectId);
-      setProject(projectData);
+      const { data, msg } = await getProject(params.projectId);
+      if (data) {
+        setProject(data);
+        return;
+      }
+
+      console.error(msg);
     }
     fetchProject();
   }, [params.projectId]);

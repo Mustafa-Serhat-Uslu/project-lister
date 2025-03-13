@@ -10,7 +10,7 @@ export type Project = {
   isFavorite?: boolean;
 };
 
-export type FormProject = Project & {
+export type FormProject = Omit<Project, "startDate" | "endDate"> & {
   startDate: dayjs.Dayjs;
   endDate: dayjs.Dayjs;
 };
@@ -20,6 +20,11 @@ export type ProjectKeys = keyof Project;
 export type FormState = {
   msg?: string;
   errors?: StringMap;
+};
+
+export type RequestState<T> = {
+  msg?: string;
+  data?: T;
 };
 
 export type StringMap = {

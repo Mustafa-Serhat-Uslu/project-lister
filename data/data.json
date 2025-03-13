@@ -1,11 +1,12 @@
 [
   {
     "projectId": "weFsfc",
-    "projectName": "123456789999",
+    "projectName": "123---OOXX",
     "description": "svsvsvsf",
     "startDate": "2025-03-16",
     "endDate": "2025-03-22",
-    "projectManager": "ACCD"
+    "projectManager": "ACCD",
+    "isFavorite": false
   },
   {
     "projectId": "wfwefsd",
@@ -17,12 +18,11 @@
   },
   {
     "projectId": "someProject",
-    "projectName": "Loo12ooooooo",
+    "projectName": "Loo12o))))",
     "description": "Some description which is long. Some description which is long. Some description which is long. Some description which is long. Some description which is long. Some description which is long.Some description which is long. Some description which is long. Some description which is long.",
     "startDate": "2025-03-01",
     "endDate": "2025-03-31",
-    "projectManager": "Definetly Not Me",
-    "isFavorite": true
+    "projectManager": "Definetly Not Me"
   },
   {
     "projectId": "idkidk",
@@ -57,6 +57,15 @@
     "startDate": "2025-02-27",
     "endDate": "2029-03-15",
     "projectManager": "`svsvsfv",
+    "isFavorite": false
+  },
+  {
+    "projectId": "MyNewProject",
+    "projectName": "MyNewProject",
+    "description": "MyNewProjectMyNewProjectMyNewProjectMyNewProjectMyNewProjectMyNewProjectMyNewProjectMyNewProjectMyNewProjectMyNewProject",
+    "startDate": "2025-03-01",
+    "endDate": "2025-03-31",
+    "projectManager": "MyNewManager",
     "isFavorite": false
   }
 ]

@@ -29,8 +29,14 @@ export const ProjectsContextProvider: React.FC<{
   useEffect(() => {
     async function fetchFavProjects() {
       try {
-        const favs: FavoritesData = await getFavoriteProjects();
-        setOptimisticFavProjects({ type: "SET", favoritesData: favs });
+        const { data, msg } = await getFavoriteProjects();
+
+        if (data) {
+          setOptimisticFavProjects({ type: "SET", favoritesData: data });
+          return;
+        }
+
+        console.error("Failed to fetch favorite projects", msg);
       } catch (error) {
         console.error("Failed to fetch favorite projects", error);
       }
