@@ -4,11 +4,11 @@ import React, { useEffect, useState } from "react";
 import { getProject } from "@/app/_actions/actions";
 import FavButton from "@/app/_components/Buttons/FavButton/FavButton";
 import ProjectForm from "@/app/_components/ProjectForm/ProjectForm";
-
 import { Project } from "@/app/_types/types";
 import { useParams } from "next/navigation";
 import Loading from "@/app/loading";
 import NavigateButton from "@/app/_components/Buttons/NavigateButton/NavigateButton";
+import toast from "react-hot-toast";
 
 export default function ProjectDetailsPage(): React.JSX.Element {
   const params = useParams<{ projectId: string }>();
@@ -24,7 +24,7 @@ export default function ProjectDetailsPage(): React.JSX.Element {
         return;
       }
 
-      console.error(msg);
+      if (msg) toast(msg);
     }
     fetchProject();
   }, [params.projectId]);

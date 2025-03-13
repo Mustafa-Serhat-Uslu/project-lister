@@ -31,6 +31,10 @@ export const StyledList = styled(List)`
     font-size: var(--font-size);
   }
 
+  .ant-empty-description {
+    font-size: var(--font-size);
+  }
+
   @media only screen and (max-width: 1200px) {
     padding-left: 0.2rem;
     padding-right: 0.2rem;

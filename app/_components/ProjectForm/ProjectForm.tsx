@@ -21,6 +21,7 @@ import {
   getFormItemProps,
   initialValues,
 } from "./ProjectFormUtils";
+import toast from "react-hot-toast";
 
 const ProjectForm = ({
   existingProject,
@@ -37,7 +38,7 @@ const ProjectForm = ({
   const router = useRouter();
 
   async function onFinish(project: FormProject): Promise<void> {
-    let errors, msg;
+    let errors, msg, failed;
 
     const projectToSend = convertProjectDatesToString(project);
 
@@ -49,22 +50,22 @@ const ProjectForm = ({
     try {
       if (existingProject) {
         optimisticFavProjectsUpdate(projectToSend);
-        ({ errors, msg } = await updateProject(projectToSend));
+        ({ errors, msg, failed } = await updateProject(projectToSend));
       } else {
-        ({ errors, msg } = await addProject(projectToSend));
+        ({ errors, msg, failed } = await addProject(projectToSend));
       }
+    } catch (e) {
+      console.error("Error occurred: ", e);
+    } finally {
+      if (msg) toast(msg);
+      if (failed) optimisticFavProjectsUpdate(existingProject); //revert
 
       if (errors) {
-        optimisticFavProjectsUpdate(existingProject); //revert
         setErrors(errors);
       } else {
-        console.log(msg); //TODO: show on a Toaster component...
         setErrors(undefined);
         router.replace("/projects");
       }
-    } catch (e) {
-      optimisticFavProjectsUpdate(existingProject); //revert
-      console.error("Error occurred: ", e);
     }
   }
 

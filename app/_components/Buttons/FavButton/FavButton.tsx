@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { toggleFavorite } from "@/app/_actions/actions";
 import { Project } from "@/app/_types/types";
 import { useProjectsContext } from "@/app/_contexts/ProjectsContext/useProjectsContext";
+import toast from "react-hot-toast";
 
 const StyledFavButton = styled(Button)`
   padding: 0;
@@ -21,11 +22,13 @@ const FavButton = ({ project }: { project: Project }) => {
   async function handleClick() {
     setOptimisticFavProjects({ type: "TOGGLE", project });
     try {
-      const { msg } = await toggleFavorite(project.projectId);
-      console.log(msg); //TODO: show on a Toaster component
+      const { msg, failed } = await toggleFavorite(project.projectId);
+
+      if (msg) toast(msg);
+      if (failed) setOptimisticFavProjects({ type: "TOGGLE", project }); // revert
     } catch (error) {
       console.error("Failed to toggle favorite status", error);
-      setOptimisticFavProjects({ type: "TOGGLE", project });
+      setOptimisticFavProjects({ type: "TOGGLE", project }); //revert
     }
   }
 

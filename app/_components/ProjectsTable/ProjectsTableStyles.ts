@@ -50,6 +50,10 @@ export const StyledTable = styled(Table)<TableProps<Project>>`
           }
         }
       }
+
+      .ant-empty-description {
+        font-size: var(--font-size);
+      }
     }
   }
 `;

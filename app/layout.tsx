@@ -4,6 +4,7 @@ import FavProjectsSideBar from "./_components/FavProjectsSideBar/FavProjectsSide
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import StyledComponentsRegistry from "./_lib/registry";
 import { ProjectsContextProvider } from "./_contexts/ProjectsContext/ProjectsContext";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Project Lister",
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={`antialiased flex w-screen h-screen`}>
         <AntdRegistry>
           <StyledComponentsRegistry>
+            <Toaster />
             <ProjectsContextProvider>
               <FavProjectsSideBar />
               {children}

@@ -7,6 +7,7 @@ import { Project } from "@/app/_types/types";
 import ProjectForm from "@/app/_components/ProjectForm/ProjectForm";
 import Loading from "@/app/loading";
 import SubmitButton from "@/app/_components/Buttons/SubmitButton/SubmitButton";
+import toast from "react-hot-toast";
 
 export default function ProjectEditPage(): React.JSX.Element {
   const params = useParams<{ projectId: string }>();
@@ -21,7 +22,7 @@ export default function ProjectEditPage(): React.JSX.Element {
         return;
       }
 
-      console.error(msg);
+      if (msg) toast(msg);
     }
     fetchProject();
   }, [params.projectId]);

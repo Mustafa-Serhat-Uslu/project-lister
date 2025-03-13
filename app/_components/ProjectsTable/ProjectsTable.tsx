@@ -6,6 +6,7 @@ import { Project } from "@/app/_types/types";
 import { ColumnType } from "antd/es/table";
 import { useWindowWidth } from "@/app/_utils/hooks/useWindowSize";
 import Loading from "@/app/loading";
+import toast from "react-hot-toast";
 
 const EXTRA_SPACE = 240;
 
@@ -21,7 +22,7 @@ const ProjectsTable = () => {
         setData(projects);
         return;
       }
-      console.error(msg);
+      if (msg) toast(msg);
     };
 
     fetchData();

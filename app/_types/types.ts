@@ -20,11 +20,13 @@ export type ProjectKeys = keyof Project;
 export type FormState = {
   msg?: string;
   errors?: StringMap;
+  failed?: boolean;
 };
 
 export type RequestState<T> = {
   msg?: string;
   data?: T;
+  failed?: boolean;
 };
 
 export type StringMap = {

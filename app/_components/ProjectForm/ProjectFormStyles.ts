@@ -74,9 +74,14 @@ export const StyledFormItem = styled(Form.Item)`
       }
       .ant-form-item-additional {
         position: absolute;
-        bottom: calc(-1 * var(--font-size) - 0.35rem);
+        z-index: 1;
+        bottom: -1.5rem;
         left: 0;
+        display: block !important;
+        height: 1.5rem;
+
         .ant-form-item-explain-error {
+          white-space: nowrap;
           font-size: var(--font-size);
         }
       }

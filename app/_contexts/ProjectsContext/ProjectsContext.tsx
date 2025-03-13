@@ -7,6 +7,7 @@ import {
   OptimisticFavoritesAction,
   optimisticFavoritesReducer,
 } from "./ProjectsContextActions";
+import toast from "react-hot-toast";
 
 export type ProjectsContextType = {
   optimisticFavProjects: FavoritesData;
@@ -35,8 +36,7 @@ export const ProjectsContextProvider: React.FC<{
           setOptimisticFavProjects({ type: "SET", favoritesData: data });
           return;
         }
-
-        console.error("Failed to fetch favorite projects", msg);
+        if (msg) toast(msg);
       } catch (error) {
         console.error("Failed to fetch favorite projects", error);
       }

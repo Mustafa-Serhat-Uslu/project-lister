@@ -4,7 +4,7 @@ import NavigateButton from "../../Buttons/NavigateButton/NavigateButton";
 
 const TableRowActions = ({ project }: { project: Project }) => {
   return (
-    <div className="flex items-stretch w-full justify-end pr-2 scale-[.6] sm:scale-75  md:scale-90 lg:scale-100">
+    <div className="flex items-end  w-full justify-end pr-2 scale-90  md:scale-95 lg:scale-100">
       <FavButton project={project} />
       <NavigateButton
         path={`/projects/${project.projectId}/edit`}
