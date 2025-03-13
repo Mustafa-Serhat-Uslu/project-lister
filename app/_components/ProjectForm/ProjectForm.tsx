@@ -9,14 +9,13 @@ import {
 import { DatePicker, Form, Input } from "antd";
 import { addProject, updateProject } from "@/app/_actions/actions";
 import { useState } from "react";
-import styled from "styled-components";
 import { ValidateStatus } from "antd/es/form/FormItem";
 import TextArea from "antd/es/input/TextArea";
 import dayjs from "dayjs";
-import { toCamelCase } from "@/app/_utils/_functions/toCamelCase";
+import { toCamelCase } from "@/app/_utils/functions/toCamelCase";
 import { useRouter } from "next/navigation";
 import { useProjectsContext } from "@/app/_contexts/ProjectsContext/useProjectsContext";
-import { responsiveFont } from "../CommonStyles/CommonStyles";
+import { StyledFormItem } from "./ProjectFormStyles";
 
 const getFormItemProps = (label: string, errors: StringMap | undefined) => {
   const dataKey: ProjectKeys = toCamelCase(label);
@@ -86,7 +85,7 @@ const ProjectForm = ({
         revertOptimisticFavProjectsUpdate();
         setErrors(errors);
       } else {
-        console.log(msg); // TODO: add toaster with msg
+        console.error(msg);
         setErrors(undefined);
         router.replace("/projects");
       }
@@ -189,118 +188,3 @@ const ProjectForm = ({
 };
 
 export default ProjectForm;
-
-const StyledFormItem = styled(Form.Item)`
-  ${responsiveFont}
-  --form-item-gap: 1.3rem;
-  --input-border-width: 0.08rem;
-
-  .ant-row {
-    flex-direction: row;
-    gap: var(--form-item-gap);
-
-    .ant-col {
-      width: 8rem;
-
-      svg {
-        display: none;
-      }
-
-      &.ant-form-item-label {
-        margin-right: 2rem;
-      }
-
-      label {
-        &::before,
-        &::after {
-          content: none !important;
-        }
-      }
-
-      label,
-      textarea,
-      input {
-        font-size: var(--font-size);
-      }
-
-      input:-webkit-autofill {
-        background-color: transparent !important;
-        box-shadow: 0 0 0px 1000px white inset !important;
-        color: #000 !important;
-      }
-
-      .ant-input-affix-wrapper,
-      textarea,
-      .ant-picker {
-        border-radius: 0;
-        border-color: black;
-        border-width: var(--input-border-width);
-      }
-
-      textarea {
-        resize: none;
-      }
-
-      .ant-input-affix-wrapper:has(input),
-      .ant-picker {
-        width: 10rem;
-        height: 2rem;
-      }
-
-      .ant-input-borderless:has(#projectManager) {
-        width: 15rem;
-      }
-
-      .ant-input-textarea-affix-wrapper {
-        width: 24rem;
-        height: 10rem;
-
-        &.ant-input-borderless {
-          height: fit-content;
-        }
-      }
-      .ant-form-item-additional {
-        position: absolute;
-        bottom: calc(-1 * var(--font-size) - 0.35rem);
-        left: 0;
-        .ant-form-item-explain-error {
-          font-size: var(--font-size);
-        }
-      }
-    }
-  }
-
-  @media only screen and (max-width: 768px) {
-    --form-item-gap: 0;
-    --input-border-width: 0.05rem;
-    margin-bottom: 0;
-
-    .ant-row {
-      flex-direction: row;
-
-      .ant-col {
-        padding-bottom: 0;
-
-        &.ant-form-item-label {
-          width: 5rem;
-          height: 1.5rem;
-          margin-right: 0.8rem;
-        }
-
-        .ant-input-textarea-affix-wrapper {
-          width: 20rem;
-        }
-      }
-    }
-  }
-  @media only screen and (max-width: 480px) {
-    .ant-row .ant-col .ant-input-textarea-affix-wrapper {
-      width: 17rem;
-    }
-  }
-  @media only screen and (max-width: 320px) {
-    .ant-row .ant-col .ant-input-textarea-affix-wrapper {
-      width: 12rem;
-    }
-  }
-`;

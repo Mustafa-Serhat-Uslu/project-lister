@@ -21,7 +21,7 @@ const FavButton = ({ project }: { project: Project }) => {
   async function handleClick() {
     setOptimisticFavProjects({ type: "TOGGLE", project });
     try {
-      await toggleFavorite(project.projectId); //TODO: add toaster?
+      await toggleFavorite(project.projectId);
     } catch (error) {
       console.error("Failed to toggle favorite status", error);
       setOptimisticFavProjects({ type: "TOGGLE", project });

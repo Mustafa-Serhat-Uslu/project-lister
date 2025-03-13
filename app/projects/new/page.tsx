@@ -1,4 +1,5 @@
-"use client"; //TODO: rethink architecture for form.item
+"use client";
+
 import CreateNewProjectButton from "@/app/_components/Buttons/CreateNewProjectButton/CreateNewProjectButton";
 import ProjectForm from "@/app/_components/ProjectForm/ProjectForm";
 import { Form } from "antd";
