@@ -14,7 +14,8 @@
     "description": "dvadsdsvsv",
     "startDate": "2022-03-07",
     "endDate": "2025-03-29",
-    "projectManager": "svasvsasv"
+    "projectManager": "svasvsasv",
+    "isFavorite": false
   },
   {
     "projectId": "someProject",

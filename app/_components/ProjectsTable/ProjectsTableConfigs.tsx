@@ -1,7 +1,7 @@
 import React from "react";
 import TableRowActions from "./TableRowActions/TableRowActions";
 import { Project } from "@/app/_types/types";
-import GoToProjectDetailsButton from "../Buttons/GoToProjectDetails/GoToProjectDetailsButton";
+import NavigateButton from "../Buttons/NavigateButton/NavigateButton";
 
 export type columnType = {
   title: string;
@@ -24,9 +24,11 @@ export const columns: columnType[] = [
     width: "3rem",
     align: "center",
     render: (_, project: Project) => (
-      <GoToProjectDetailsButton
-        projectId={project.projectId}
+      <NavigateButton
+        key={project.projectId}
+        path={`/projects/${project.projectId}`}
         text={project.projectId}
+        typeOverride="text"
       />
     ),
   },

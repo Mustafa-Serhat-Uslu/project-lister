@@ -1,15 +1,15 @@
 import { Button } from "antd";
 
-const CreateNewProjectButton = () => {
+const SubmitButton = ({ text }: { text: string }) => {
   return (
     <Button
       htmlType="submit"
       type="primary"
       className="rounded-none w-24 scale-75 md:scale-100"
     >
-      Create
+      {text}
     </Button>
   );
 };
 
-export default CreateNewProjectButton;
+export default SubmitButton;

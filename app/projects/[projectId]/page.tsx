@@ -3,13 +3,12 @@
 import React, { useEffect, useState } from "react";
 import { getProject } from "@/app/_actions/actions";
 import FavButton from "@/app/_components/Buttons/FavButton/FavButton";
-import GoBackButton from "@/app/_components/Buttons/GoBackButton/GoBackButton";
-import GoToEditButton from "@/app/_components/Buttons/GoToEditButton/GoToEditButton";
 import ProjectForm from "@/app/_components/ProjectForm/ProjectForm";
 
 import { Project } from "@/app/_types/types";
 import { useParams } from "next/navigation";
 import Loading from "@/app/loading";
+import NavigateButton from "@/app/_components/Buttons/NavigateButton/NavigateButton";
 
 export default function ProjectDetailsPage(): React.JSX.Element {
   const params = useParams<{ projectId: string }>();
@@ -40,8 +39,11 @@ export default function ProjectDetailsPage(): React.JSX.Element {
         disabledFields={allProjectKeys}
         buttons={
           <div className="max-w-md flex justify-center mt-12 gap-5">
-            <GoBackButton />
-            <GoToEditButton projectId={params.projectId} />
+            <NavigateButton path={"/projects"} text={"Back"} />
+            <NavigateButton
+              path={`/projects/${project.projectId}/edit`}
+              text="Edit"
+            />
           </div>
         }
       />

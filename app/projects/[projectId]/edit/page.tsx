@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { getProject } from "@/app/_actions/actions";
 import { Project } from "@/app/_types/types";
-import UpdateButton from "@/app/_components/Buttons/Update/UpdateButton";
 import ProjectForm from "@/app/_components/ProjectForm/ProjectForm";
 import Loading from "@/app/loading";
+import SubmitButton from "@/app/_components/Buttons/SubmitButton/SubmitButton";
 
 export default function ProjectEditPage(): React.JSX.Element {
   const params = useParams<{ projectId: string }>();
@@ -35,7 +35,7 @@ export default function ProjectEditPage(): React.JSX.Element {
         disabledFields={["projectId"]}
         buttons={
           <div className="max-w-md flex justify-center mt-12 gap-5">
-            <UpdateButton />
+            <SubmitButton text={"Update"} />
           </div>
         }
       />

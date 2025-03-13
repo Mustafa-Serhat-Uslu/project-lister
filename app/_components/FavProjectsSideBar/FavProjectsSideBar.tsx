@@ -3,8 +3,9 @@
 import { ProjectsContextType } from "@/app/_contexts/ProjectsContext/ProjectsContext";
 import { useProjectsContext } from "@/app/_contexts/ProjectsContext/useProjectsContext";
 import { Divider, List } from "antd";
-import GoToProjectDetailsButton from "../Buttons/GoToProjectDetails/GoToProjectDetailsButton";
+
 import { StyledList } from "./FavProjectsSideBarStyles";
+import NavigateButton from "../Buttons/NavigateButton/NavigateButton";
 
 export default function FavProjectsSideBar() {
   const { optimisticFavProjects }: ProjectsContextType = useProjectsContext();
@@ -22,9 +23,10 @@ export default function FavProjectsSideBar() {
 
           return (
             <List.Item>
-              <GoToProjectDetailsButton
-                projectId={projectId}
+              <NavigateButton
+                path={`/projects/${projectId}`}
                 text={optimisticFavProjects[projectId]}
+                typeOverride="text"
               />
             </List.Item>
           );
