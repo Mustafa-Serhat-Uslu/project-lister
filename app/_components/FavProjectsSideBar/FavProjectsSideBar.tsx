@@ -13,7 +13,7 @@ export default function FavProjectsSideBar() {
   if (!optimisticFavProjects) return undefined;
 
   return (
-    <div className="flex pr-0 md:pr-2">
+    <div className="flex pr-0 md:pr-2 sm:ml-1 lg:ml-4">
       <StyledList
         size="small"
         header={<div>Favorite Projects</div>}
