@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import TableContent from "./TableContent/TableContent";
 import { useWindowWidth } from "@/app/_utils/hooks/useWindowSize";
 
-const EXTRA_SPACE = 240;
+const EXTRA_SPACE = 250;
 
 const ProjectsTable = () => {
   const windowWidth = useWindowWidth();

@@ -1,29 +1,56 @@
 [
   {
     "projectId": "project_a",
-    "projectName": "Project A",
+    "projectName": "Project_____",
     "description": "This is a long description of project A and what it's all about. Can go for days. Long, very long. ",
     "startDate": "2025-03-01",
     "endDate": "2025-03-31",
     "projectManager": "The Manager of A",
-    "isFavorite": false
+    "isFavorite": true
   },
   {
     "projectId": "project_b",
-    "projectName": "Project B",
+    "projectName": "B Projecpkns",
     "description": "This is a long description of project B and what it's all about. Can go for days. Long, very long. ",
     "startDate": "2025-03-02",
     "endDate": "2025-03-30",
     "projectManager": "The Manager of B",
-    "isFavorite": false
+    "isFavorite": true
   },
   {
-    "projectId": "C project",
+    "projectId": "C_project",
     "projectName": "CCC",
     "description": "This is a long description of project C and what it's all about. Can go for days. Long, very long. This is a long description of project C and what it's all about. Can go for days. Long, very long. ",
     "startDate": "2024-03-02",
     "endDate": "2025-03-30",
     "projectManager": "Some C Manager",
+    "isFavorite": false
+  },
+  {
+    "projectId": "SOmeProj",
+    "projectName": "osnvowef",
+    "description": "SOME LONG DESCSOME LONG DESCSOME LONG DESCSOME LONG DESCSOME LONG DESCSOME LONG DESCSOME LONG DESCSOME LONG DESCSOME LONG DESC",
+    "startDate": "2025-03-01",
+    "endDate": "2028-02-24",
+    "projectManager": "someManger",
+    "isFavorite": false
+  },
+  {
+    "projectId": "jjjdjdjdjd",
+    "projectName": "jnjnj",
+    "description": "ljns;DVJN;wsjbnfv;osjBNV'OJsbnv'o;jsbnv'ojsbnv;ojsnvl;ksjnv'sdjbnv'oswjvb'lsdjbvn'sjobv'ojsvsv",
+    "startDate": "2025-03-01",
+    "endDate": "2025-03-29",
+    "projectManager": "somewmabjhevdan",
+    "isFavorite": false
+  },
+  {
+    "projectId": "project_1",
+    "projectName": "sdsfsf",
+    "description": "sdvs`vsv",
+    "startDate": "2025-03-02",
+    "endDate": "2025-03-31",
+    "projectManager": "svsfvsv",
     "isFavorite": false
   }
 ]
