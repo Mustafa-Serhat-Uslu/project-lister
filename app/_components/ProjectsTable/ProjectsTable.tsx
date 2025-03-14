@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
-import { StyledTable } from "./ProjectsTableStyles";
 import { getProjects } from "@/app/_actions/actions";
-import { columns } from "./ProjectsTableConfigs";
 import { Project } from "@/app/_types/types";
-import { ColumnType } from "antd/es/table";
-import { useWindowWidth } from "@/app/_utils/hooks/useWindowSize";
 import Loading from "@/app/loading";
 import toast from "react-hot-toast";
+import TableContent from "./TableContent/TableContent";
+import { useWindowWidth } from "@/app/_utils/hooks/useWindowSize";
 
 const EXTRA_SPACE = 240;
 
 const ProjectsTable = () => {
   const windowWidth = useWindowWidth();
-
   const [data, setData] = useState<Project[]>([]);
 
   useEffect(() => {
@@ -30,17 +27,7 @@ const ProjectsTable = () => {
 
   if (!data) return <Loading />;
 
-  return (
-    <StyledTable<Project>
-      style={{ width: windowWidth - EXTRA_SPACE }} //For active resizing
-      rowKey={"projectId"}
-      dataSource={data}
-      columns={columns as ColumnType<Project>[]}
-      sticky={true}
-      pagination={false}
-      scroll={{ x: "max-content" }}
-    />
-  );
+  return <TableContent data={data} width={windowWidth - EXTRA_SPACE} />;
 };
 
 export default ProjectsTable;

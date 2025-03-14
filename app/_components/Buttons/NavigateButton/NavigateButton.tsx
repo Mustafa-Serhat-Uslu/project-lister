@@ -16,6 +16,7 @@ const NavigateButton = ({
   return (
     <Link href={path}>
       <Button
+        data-testid="navigate-button"
         type={typeOverride || "primary"}
         className={
           typeOverride === "text"
