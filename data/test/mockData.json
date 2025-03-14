@@ -1,0 +1,29 @@
+[
+  {
+    "projectId": "project_a",
+    "projectName": "Project A",
+    "description": "This is a long description of project A and what it's all about. Can go for days. Long, very long. ",
+    "startDate": "2025-03-01",
+    "endDate": "2025-03-31",
+    "projectManager": "The Manager of A",
+    "isFavorite": false
+  },
+  {
+    "projectId": "project_b",
+    "projectName": "Project B",
+    "description": "This is a long description of project B and what it's all about. Can go for days. Long, very long. ",
+    "startDate": "2025-03-02",
+    "endDate": "2025-03-30",
+    "projectManager": "The Manager of B",
+    "isFavorite": false
+  },
+  {
+    "projectId": "C project",
+    "projectName": "CCC",
+    "description": "This is a long description of project C and what it's all about. Can go for days. Long, very long. This is a long description of project C and what it's all about. Can go for days. Long, very long. ",
+    "startDate": "2024-03-02",
+    "endDate": "2025-03-30",
+    "projectManager": "Some C Manager",
+    "isFavorite": false
+  }
+]
