@@ -23,7 +23,7 @@ export const getFormItemProps = (
   label: string,
   errors: StringMap | undefined
 ) => {
-  const dataKey: ProjectKeys = toCamelCase(label);
+  const dataKey = toCamelCase(label) as ProjectKeys;
 
   return {
     name: dataKey,

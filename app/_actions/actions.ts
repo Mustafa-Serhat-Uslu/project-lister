@@ -1,7 +1,5 @@
 "use server";
 
-import fs from "fs/promises";
-import path from "path";
 import {
   FavoritesData,
   FormState,
@@ -10,15 +8,12 @@ import {
 } from "../_types/types";
 import { ProjectSchema } from "../_schemas/projectSchema";
 import { convertZodErrors } from "../_utils/errors/errors";
-
-const filePath = path.join(process.cwd(), "data", "data.json");
+import { readProjects, writeProjects } from "../_lib/dataStore";
 
 export async function getProjects(): Promise<RequestState<Project[]>> {
   // await new Promise((resolve) => setTimeout(resolve, 500)); //TODO: remove delay after testing
   try {
-    const rawProjects = await fs.readFile(filePath, "utf-8");
-
-    const data = rawProjects ? JSON.parse(rawProjects) : [];
+    const data = await readProjects();
 
     return { data };
   } catch (error) {
@@ -61,7 +56,7 @@ export const addProject = async (newProject: Project): Promise<FormState> => {
     if (!projects) return { msg, failed: true };
 
     projects.push({ ...newProject, isFavorite: false });
-    await fs.writeFile(filePath, JSON.stringify(projects, null, 2), "utf-8");
+    await writeProjects(projects);
 
     return { msg: "Project created successfully!" };
   } catch (e) {
@@ -90,7 +85,7 @@ export async function updateProject(
 
     projects[indexToUpdate] = updatedProject;
 
-    await fs.writeFile(filePath, JSON.stringify(projects, null, 2), "utf-8");
+    await writeProjects(projects);
 
     return { msg: "Project updated successfully!" };
   } catch (e) {
@@ -120,7 +115,7 @@ export async function toggleFavorite(
       isFavorite: !projects[indexToUpdate].isFavorite,
     };
 
-    await fs.writeFile(filePath, JSON.stringify(projects, null, 2), "utf-8");
+    await writeProjects(projects);
     return { msg: "Favorites Updated!" };
   } catch (e) {
     console.error("Error toggling favorite:", e);

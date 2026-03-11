@@ -3,6 +3,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  outputFileTracingIncludes: {
+    "/*": ["./data/**"],
+  },
   redirects: async () => [
     {
       source: "/",

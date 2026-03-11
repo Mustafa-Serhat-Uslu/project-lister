@@ -11,7 +11,7 @@ export type columnType = {
   responsive?: string[];
   width: string;
   align: string;
-  render?: (_, project: Project) => React.JSX.Element;
+  render?: (_: unknown, project: Project) => React.JSX.Element;
 };
 
 export const columns: columnType[] = [

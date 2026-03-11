@@ -5,7 +5,7 @@ import { columns } from "../ProjectsTableConfigs";
 
 const TableContent = ({ data, width }: { data: Project[]; width: number }) => {
   return (
-    <StyledTable<Project>
+    <StyledTable
       style={{ width }} //For active resizing
       rowKey={"projectId"}
       dataSource={data}

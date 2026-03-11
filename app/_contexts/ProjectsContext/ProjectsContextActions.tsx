@@ -31,6 +31,7 @@ export const optimisticFavoritesReducer = (
 
       //remove project from favs
       if (state[project.projectId]) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { [project.projectId]: _, ...rest } = state;
         return rest;
       }
